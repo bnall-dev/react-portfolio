@@ -22,15 +22,22 @@ const fetchUser = async () => {
 };
 
 function App() {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     fetchUser().then(data => setUser(data));
-  }, []);
+  }, [user]);
+
+  const handleChangeUser = async e => {
+    const storage = window.localStorage;
+
+    const user = (await axios.get(`${API}/users/random`)).data;
+    storage.setItem('userId', user.id);
+  };
 
   return (
     <div id="app">
-      <Header user={user} />
+      <Header user={user} handleChangeUser={handleChangeUser} />
     </div>
   );
 }
