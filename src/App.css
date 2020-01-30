@@ -1,3 +1,7 @@
+h5 {
+  margin: 1em;
+}
+
 #header {
   display: flex;
   justify-content: space-between;
@@ -16,4 +20,32 @@
 
 #changeUser {
   height: 50px;
+}
+
+#vacations {
+  margin: 64px;
+}
+
+#createVacation {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  border: 1px solid grey;
+  background-color: lightgray;
+}
+#vacationList {
+  width: 60%;
+}
+
+.vacation {
+  border-bottom: 1px solid grey;
+}
+
+.removeVacation {
+  margin-bottom: 16px;
+}
+
+#submitVacation {
+  margin-top: 16px;
 }
