@@ -53,3 +53,48 @@ h5 {
 #notes {
   margin: 64px;
 }
+
+#home {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 32px;
+  align-items: center;
+  height: 20rem;
+}
+
+#home .link {
+  background-color: lightgrey;
+  border: 1px solid grey;
+  height: 300px;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  width: 300px;
+  text-align: center;
+  line-height: 290px;
+}
+
+#home .link:hover {
+  color: white;
+  background-color: darkgray;
+  border: 1px solid grey;
+  height: 300px;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  width: 300px;
+  text-align: center;
+  line-height: 290px;
+}
+
+#home a {
+  color: white;
+  font-size: xx-large;
+  text-decoration: none;
+}
+
+#home a:hover {
+  color: black;
+  font-size: xx-large;
+  text-decoration: none;
+}

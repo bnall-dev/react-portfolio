@@ -3,9 +3,13 @@ import React from "react";
 function Home(props) {
   return (
     <div id="home">
-      <a href="#view=vacations">Vacations</a>
+      <div className="link">
+        <a href="#view=vacations">Vacation</a>
+      </div>
       <br></br>
-      <a href="#view=notes">Notes</a>
+      <div className="link">
+        <a href="#view=notes">Notes</a>
+      </div>
     </div>
   );
 }
