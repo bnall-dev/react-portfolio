@@ -1,100 +1,292 @@
-h5 {
-  margin: 1em;
+/* GLOBAL */
+
+h3 {
+  margin: 8px;
+  font-family: "Bree Serif";
+  font-size: 40px;
+  color: rgb(241, 241, 241);
+  text-align: center;
 }
+
+h4 {
+  font-family: "Bree Serif";
+  font-size: 24px;
+  margin: 16px;
+  text-align: center;
+}
+
+h5 {
+  margin: 0;
+  margin-bottom: 8px;
+  font-family: "Barlow Condensed";
+  font-size: 18px;
+  text-align: center;
+}
+
+h6 {
+  margin: 8px;
+  font-size: 16px;
+  font-family: "Barlow Condensed";
+}
+
+#app {
+  background-color: rgb(204, 214, 221);
+  height: 100%;
+  min-height: 100vh;
+}
+
+.placeholder {
+  font-family: "Bree Serif";
+  font-size: 40px;
+  margin: 64px;
+  color: rgb(241, 241, 241);
+  text-align: center;
+}
+
+/* HEADER */
 
 #header {
   display: flex;
   justify-content: space-between;
-  padding: 32px;
+  padding: 16px 32px 16px 32px;
   align-items: center;
-  background-color: grey;
-  color: white;
+  background-color: rgb(17, 17, 136);
+  color: rgb(241, 241, 241);
 }
 
 #avatar {
-  border-radius: 100%;
-  width: 50px;
-  height: 50px;
-  border: 2px solid white;
+  border-radius: 20px;
+  width: 100px;
+  height: 100px;
+}
+
+#welcomeText {
+  width: 70%;
+  text-align: center;
+}
+
+#welcome {
+  font-family: "Barlow Condensed";
+}
+
+#userEmail {
+  word-wrap: break-word;
+  font-family: "Bree Serif";
 }
 
 #changeUser {
-  height: 50px;
+  width: 100px;
+  height: 100px;
+  background-color: rgb(161, 19, 19);
+  border: none;
+  border-radius: 20px;
+  color: rgb(241, 241, 241);
+  font-size: 20px;
+  font-family: "Bree Serif";
 }
 
+/* HOME */
+#home {
+  background-color: rgb(112, 124, 175);
+  margin: 32px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 20px;
+}
+
+.homeItem {
+  margin-bottom: 16px;
+  padding: 16px;
+  background-color: white;
+  border-radius: 20px;
+  width: 60%;
+  text-align: center;
+  font-size: 32px;
+  background-color: rgb(17, 17, 136);
+  color: rgb(241, 241, 241);
+  border: 7px solid rgb(161, 19, 19);
+  text-decoration: none;
+}
+
+/* VACATIONS */
+
 #vacations {
-  margin: 64px;
+  background-color: rgb(112, 124, 175);
+  margin: 32px;
+  padding: 32px 64px 32px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 20px;
 }
 
 #createVacation {
-  width: 50%;
+  width: 60%;
   display: flex;
   flex-direction: column;
-  padding: 32px;
+  align-items: center;
+  padding: 16px 32px 32px 32px;
   border: 1px solid grey;
-  background-color: lightgray;
+  background-color: rgb(17, 17, 136);
+  border-radius: 20px;
+  border: 7px solid rgb(161, 19, 19);
 }
+
+input[type="date"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  display: none;
+}
+
+#startDate {
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  font-family: "Barlow Condensed";
+  text-align: end;
+  margin-bottom: 8px;
+  background-color: rgb(241, 241, 241);
+  padding: 4px;
+}
+#endDate {
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  font-family: "Barlow Condensed";
+  text-align: end;
+  background-color: rgb(241, 241, 241);
+  padding: 4px;
+}
+
 #vacationList {
-  width: 60%;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40vh;
+  overflow: scroll;
 }
 
 .vacation {
-  border-bottom: 1px solid grey;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(204, 214, 221);
+  border-radius: 25px;
+  padding: 16px;
+  margin-top: 16px;
+  width: 90%;
 }
 
 .removeVacation {
-  margin-bottom: 16px;
+  background-color: rgb(161, 19, 19);
+  border-radius: 100%;
+  height: 2em;
+  width: 2em;
+  padding: 4px;
+  color: rgb(241, 241, 241);
 }
 
 #submitVacation {
   margin-top: 16px;
+  font-size: 20px;
+  font-family: "Bree Serif";
+  background-color: rgb(161, 19, 19);
+  color: rgb(241, 241, 241);
+  border: none;
+  border-radius: 10px;
+  padding: 4px 16px 8px 16px;
 }
+
+/* NOTES */
 
 #notes {
   margin: 64px;
 }
 
-#home {
+/* FOLLOWING COMPANIES */
+
+#followingCompanies {
+  background-color: rgb(112, 124, 175);
+  margin: 32px;
+  padding: 32px 64px 32px 64px;
   display: flex;
-  justify-content: space-evenly;
-  padding: 32px;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  height: 20rem;
+  border-radius: 20px;
 }
 
-#home .link {
-  background-color: lightgrey;
+#followingCompaniesList {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: scroll;
+  height: 50vh;
+}
+
+.followingCompany {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(204, 214, 221);
+  border-radius: 25px;
+  padding: 16px;
+  margin-top: 16px;
+  width: 90%;
+}
+
+#followCompany {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 32px 32px 32px;
   border: 1px solid grey;
-  height: 300px;
-  border-radius: 50%;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  width: 300px;
-  text-align: center;
-  line-height: 290px;
+  background-color: rgb(17, 17, 136);
+  border-radius: 20px;
+  border: 7px solid rgb(161, 19, 19);
 }
 
-#home .link:hover {
-  color: white;
-  background-color: darkgray;
-  border: 1px solid grey;
-  height: 300px;
-  border-radius: 50%;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  width: 300px;
-  text-align: center;
-  line-height: 290px;
+#selectCompany {
+  font-size: 18px;
+  font-family: "Barlow Condensed";
+  border-radius: 20px;
+  border: none;
+  background-color: rgb(241, 241, 241);
+  margin-bottom: 16px;
+
+  width: 60%;
 }
 
-#home a {
-  color: white;
-  font-size: xx-large;
-  text-decoration: none;
+.rating {
+  display: flex;
 }
 
-#home a:hover {
-  color: black;
-  font-size: xx-large;
-  text-decoration: none;
+.star {
+  height: 40px;
+}
+
+#submitCompany {
+  border: none;
+  background-color: rgb(161, 19, 19);
+  border-radius: 15px;
+  font-family: "Bree Serif";
+  font-size: 18px;
+  padding: 4px 12px 4px 12px;
+  color: rgb(241, 241, 241);
+}
+
+.unfollowCompany {
+  background-color: rgb(161, 19, 19);
+  border-radius: 15px;
+  font-family: "Bree Serif";
+  padding: 8px;
+  color: rgb(241, 241, 241);
+  border: none;
+  margin: 8px;
 }

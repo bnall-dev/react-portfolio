@@ -17,7 +17,6 @@ function Notes(props) {
 
   return (
     <div id="notes">
-      <a href="#">Home</a>
       <h3 className="header">NOTES</h3>
       <ul>{noteList}</ul>
       {console.log(noteList)}
