@@ -7,36 +7,41 @@ function Vacations({
   handleRemoveVacation,
   handleSubmitVacation,
 }) {
-  const vacationList = vacations.map(function(vacation, i) {
-    const key = 'vacation' + i;
-    const x = moment(vacation.startDate);
-    const y = moment(vacation.endDate);
-    const duration = moment.duration(y.diff(x));
-    const days = duration.asDays();
-    return (
-      <div className="vacation" key={key}>
-        <h5>
-          Start Date :{' '}
-          {moment(vacation.startDate)
-            .add(1, 'day')
-            .format('dddd MM/DD/YYYY ')}
-        </h5>
-        <h5>
-          End Date :{' '}
-          {moment(vacation.endDate)
-            .add(1, 'day')
-            .format('dddd MM/DD/YYYY')}
-        </h5>
-        <h5>{days} Days</h5>
-        <button
-          className="removeVacation"
-          onClick={() => handleRemoveVacation(vacation)}
-        >
-          X
-        </button>
-      </div>
-    );
-  });
+  let vacationList;
+  if (vacations.length > 0) {
+    vacationList = vacations.map(function(vacation, i) {
+      const key = 'vacation' + i;
+      const x = moment(vacation.startDate);
+      const y = moment(vacation.endDate);
+      const duration = moment.duration(y.diff(x));
+      const days = duration.asDays();
+      return (
+        <div className="vacation" key={key}>
+          <h5>
+            Start Date :{' '}
+            {moment(vacation.startDate)
+              .add(1, 'day')
+              .format('dddd MM/DD/YYYY ')}
+          </h5>
+          <h5>
+            End Date :{' '}
+            {moment(vacation.endDate)
+              .add(1, 'day')
+              .format('dddd MM/DD/YYYY')}
+          </h5>
+          <h5>{days} Days</h5>
+          <button
+            className="removeVacation"
+            onClick={() => handleRemoveVacation(vacation)}
+          >
+            X
+          </button>
+        </div>
+      );
+    });
+  } else {
+    vacationList = <div className="placeholder">No Vacations Scheduled</div>;
+  }
 
   return (
     <div id="vacations">

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Vacations from './components/Vacations';
 import Notes from './components/Notes';
+import FollowingCompanies from './components/FollowingCompanies';
 import Home from './components/Home';
 import './App.css';
 import axios from 'axios';
@@ -43,15 +44,35 @@ const fetchNotes = async () => {
   return notes;
 };
 
+//FETCHES FOLLOWING COMPANIES BASED ON USER
+const fetchFollowingCompanies = async () => {
+  const storage = window.localStorage;
+  const userId = storage.getItem('userId');
+  const followingCompanies = (
+    await axios.get(`${API}/users/${userId}/followingCompanies`)
+  ).data;
+
+  return followingCompanies;
+};
+
+//FETCHES ALL COMPANIES
+const fetchCompanies = async () => {
+  const companies = (await axios.get(`${API}/companies`)).data;
+  return companies;
+};
+
 function App() {
-  //USER, VACATION, AND NOTES STATES
+  //USER, VACATIONS, NOTES, FOLLOWING COMPANIES, & COMPANIES STATES
   const [user, setUser] = useState({});
   const [vacations, setVacations] = useState([]);
   const [notes, setNotes] = useState([]);
+  const [followingCompanies, setFollowingCompanies] = useState([]);
+  const [companies, setCompanies] = useState([]);
+
   //ROUTING/PARAMS STATE
   const [params, setParams] = useState(qs.parse(getHash()));
 
-  //ASSIGNS USER TO STATE AND CREATES HASHCHANGE LISTNER
+  //ASSIGNS USER TO STATE AND CREATES HASHCHANGE LISTENER
   useEffect(() => {
     window.addEventListener('hashchange', () => {
       setParams(qs.parse(getHash()));
@@ -60,11 +81,17 @@ function App() {
     fetchUser().then(data => setUser(data));
   }, []);
 
-  //ASSIGNS NOTES AND VACATION LIST TO STATE
+  //ASSIGNS VACATIONS, NOTES, & FOLLOWING COMPANIES LIST TO STATE
   useEffect(() => {
     fetchVacations().then(data => setVacations(data));
     fetchNotes().then(data => setNotes(data));
+    fetchFollowingCompanies().then(data => setFollowingCompanies(data));
   }, [user]);
+
+  //ASSIGNS COMPANIES TO STATE
+  useEffect(() => {
+    fetchCompanies().then(data => setCompanies(data));
+  }, []);
 
   //ON CLICK RANDOMLY CHANGES USER
   const handleChangeUser = async e => {
@@ -102,11 +129,48 @@ function App() {
     );
   };
 
+  //FOLLOWS COMPANY USING FORM SELECTION
+  const createCompany = async company => {
+    const response = await axios.post(
+      `${API}/users/${user.id}/followingCompanies/`,
+      company
+    );
+    setFollowingCompanies([...followingCompanies, response.data]);
+  };
+
+  const handleFollowCompany = async e => {
+    e.preventDefault();
+    const selectedCompany = companies.find(function(company) {
+      return company.name === e.target.elements[0].value;
+    });
+
+    await createCompany({
+      rating: selectedCompany.rating,
+      companyId: selectedCompany.id,
+    });
+  };
+
+  //UNFOLLOWS FOLLOWING COMPANY
+  const handleUnfollowCompany = async followingCompanyToDestroy => {
+    await axios.delete(
+      `${API}/users/${user.id}/followingCompanies/${followingCompanyToDestroy.id}`
+    );
+    setFollowingCompanies(
+      followingCompanies.filter(
+        followingCompany => followingCompany.id !== followingCompanyToDestroy.id
+      )
+    );
+  };
+
   return (
     <div id="app">
       <Header user={user} handleChangeUser={handleChangeUser} />
       {params.view === undefined && (
-        <Home vacations={vacations} notes={notes} />
+        <Home
+          vacations={vacations}
+          notes={notes}
+          followingCompanies={followingCompanies}
+        />
       )}
       {params.view === 'vacations' && (
         <Vacations
@@ -114,6 +178,14 @@ function App() {
           vacations={vacations}
           handleRemoveVacation={handleRemoveVacation}
           handleSubmitVacation={handleSubmitVacation}
+        />
+      )}
+      {params.view === 'followingCompanies' && (
+        <FollowingCompanies
+          followingCompanies={followingCompanies}
+          companies={companies}
+          handleFollowCompany={handleFollowCompany}
+          handleUnfollowCompany={handleUnfollowCompany}
         />
       )}
       {params.view === 'notes' && <Notes user={user} notes={notes} />}

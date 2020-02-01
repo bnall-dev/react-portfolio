@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Home({ vacations, notes }) {
+function Home({ vacations, notes, followingCompanies }) {
   return (
     <div id="home">
       <a className="homeItem" href="#view=vacations">
@@ -12,8 +12,8 @@ function Home({ vacations, notes }) {
         <h6>You have {notes.length} Notes</h6>
       </a>
       <a className="homeItem" href="#view=followingCompanies">
-        Following Companies
-        <h6>You are following Companies</h6>
+        <h3>Following Companies</h3>
+        <h6>You are following {followingCompanies.length} Companies</h6>
       </a>
     </div>
   );
