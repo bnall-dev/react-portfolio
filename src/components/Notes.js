@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 function Notes(props) {
   //Iterate through note data and make li for each note
@@ -8,7 +8,6 @@ function Notes(props) {
 
   return (
     <div id="notes">
-      <a href="#">Home</a>
       <h3 className="header">NOTES</h3>
       <ul>{noteList}</ul>
     </div>

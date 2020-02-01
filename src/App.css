@@ -1,54 +1,184 @@
-h5 {
-  margin: 1em;
+/* GLOBAL */
+
+h3 {
+  margin: 8px;
+  font-family: 'Bree Serif';
+  font-size: 40px;
+  color: rgb(241, 241, 241);
 }
+
+h5 {
+  margin: 0;
+  margin-bottom: 8px;
+  font-family: 'Barlow Condensed';
+  font-size: 16px;
+}
+
+h6 {
+  margin: 8px;
+  font-family: 'Barlow Condensed';
+}
+
+#app {
+  background-color: rgb(204, 214, 221);
+  height: 100%;
+  min-height: 100vh;
+}
+/* HEADER */
 
 #header {
   display: flex;
   justify-content: space-between;
-  padding: 32px;
+  padding: 16px;
   align-items: center;
-  background-color: grey;
-  color: white;
+  background-color: rgb(17, 17, 136);
+  color: rgb(241, 241, 241);
 }
 
 #avatar {
-  border-radius: 100%;
-  width: 50px;
-  height: 50px;
-  border: 2px solid white;
+  border-radius: 20px;
+  width: 100px;
+  height: 100px;
+}
+
+#welcomeText {
+  width: 70%;
+  text-align: center;
+}
+
+#welcome {
+  font-family: 'Barlow Condensed';
+}
+
+#userEmail {
+  word-wrap: break-word;
+  font-family: 'Bree Serif';
 }
 
 #changeUser {
-  height: 50px;
+  width: 100px;
+  height: 100px;
+  background-color: rgb(161, 19, 19);
+  border: none;
+  border-radius: 20px;
+  color: rgb(241, 241, 241);
+  font-size: 20px;
+  font-family: 'Bree Serif';
 }
 
+/* HOME */
+#home {
+  background-color: rgb(112, 124, 175);
+  margin: 32px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 20px;
+}
+
+.homeItem {
+  margin-bottom: 16px;
+  padding: 16px;
+  background-color: white;
+  border-radius: 20px;
+  width: 60%;
+  text-align: center;
+  font-size: 32px;
+  background-color: rgb(17, 17, 136);
+  color: rgb(241, 241, 241);
+  border: 7px solid rgb(161, 19, 19);
+  text-decoration: none;
+}
+
+/* VACATIONS */
+
 #vacations {
-  margin: 64px;
+  background-color: rgb(112, 124, 175);
+  margin: 32px;
+  padding: 32px 64px 32px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 20px;
 }
 
 #createVacation {
-  width: 50%;
+  width: 60%;
   display: flex;
   flex-direction: column;
-  padding: 32px;
+  align-items: center;
+  padding: 16px 32px 32px 32px;
   border: 1px solid grey;
-  background-color: lightgray;
+  background-color: rgb(17, 17, 136);
+  border-radius: 20px;
+  border: 7px solid rgb(161, 19, 19);
+  margin-bottom: 8px;
 }
+
+input[type='date']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  display: none;
+}
+
+#startDate {
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  font-family: 'Barlow Condensed';
+  text-align: end;
+  margin-bottom: 4px;
+  background-color: rgb(241, 241, 241);
+  padding: 4px;
+}
+#endDate {
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  font-family: 'Barlow Condensed';
+  text-align: end;
+  background-color: rgb(241, 241, 241);
+  padding: 4px;
+}
+
 #vacationList {
   width: 60%;
 }
 
 .vacation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border-bottom: 1px solid grey;
+  background-color: rgb(204, 214, 221);
+  border-radius: 25px;
+  padding: 16px;
+  margin: 8px;
 }
 
 .removeVacation {
-  margin-bottom: 16px;
+  background-color: red;
+  border-radius: 100%;
+  height: 2em;
+  width: 2em;
+  padding: 4px;
+  color: rgb(241, 241, 241);
 }
 
 #submitVacation {
   margin-top: 16px;
+  font-size: 20px;
+  font-family: 'Bree Serif';
+  background-color: rgb(161, 19, 19);
+  color: rgb(241, 241, 241);
+  border: none;
+  border-radius: 10px;
+  padding: 4px 16px 8px 16px;
 }
+
+/* NOTES */
 
 #notes {
   margin: 64px;

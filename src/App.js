@@ -1,36 +1,36 @@
-import React, { useState, useEffect } from "react";
-import Header from "./components/Header";
-import Vacations from "./components/Vacations";
-import Notes from "./components/Notes";
-import Home from "./components/Home";
-import "./App.css";
-import axios from "axios";
-import { getHash } from "./utils";
-import qs from "qs";
+import React, { useState, useEffect } from 'react';
+import Header from './components/Header';
+import Vacations from './components/Vacations';
+import Notes from './components/Notes';
+import Home from './components/Home';
+import './App.css';
+import axios from 'axios';
+import { getHash } from './utils';
+import qs from 'qs';
 
-const API = "https://acme-users-api-rev.herokuapp.com/api";
+const API = 'https://acme-users-api-rev.herokuapp.com/api';
 
 //FETCHES RANDOM USER ON LOAD
 const fetchUser = async () => {
   const storage = window.localStorage;
-  const userId = storage.getItem("userId");
+  const userId = storage.getItem('userId');
   if (userId) {
     try {
       return (await axios.get(`${API}/users/detail/${userId}`)).data;
     } catch (ex) {
-      storage.removeItem("userId");
+      storage.removeItem('userId');
       return fetchUser();
     }
   }
   const user = (await axios.get(`${API}/users/random`)).data;
-  storage.setItem("userId", user.id);
+  storage.setItem('userId', user.id);
   return user;
 };
 
 //FETCHES VACATION LIST BASED ON USER
 const fetchVacations = async () => {
   const storage = window.localStorage;
-  const userId = storage.getItem("userId");
+  const userId = storage.getItem('userId');
   const vacations = (await axios.get(`${API}/users/${userId}/vacations`)).data;
   return vacations;
 };
@@ -38,7 +38,7 @@ const fetchVacations = async () => {
 //FETCHES NOTES BASED ON USER
 const fetchNotes = async () => {
   const storage = window.localStorage;
-  const userId = storage.getItem("userId");
+  const userId = storage.getItem('userId');
   const notes = (await axios.get(`${API}/users/${userId}/notes`)).data;
   return notes;
 };
@@ -53,7 +53,7 @@ function App() {
 
   //ASSIGNS USER TO STATE AND CREATES HASHCHANGE LISTNER
   useEffect(() => {
-    window.addEventListener("hashchange", () => {
+    window.addEventListener('hashchange', () => {
       setParams(qs.parse(getHash()));
     });
     setParams(qs.parse(getHash()));
@@ -70,7 +70,7 @@ function App() {
   const handleChangeUser = async e => {
     const storage = window.localStorage;
     const user = (await axios.get(`${API}/users/random`)).data;
-    storage.setItem("userId", user.id);
+    storage.setItem('userId', user.id);
     setUser(user);
   };
 
@@ -88,7 +88,7 @@ function App() {
 
     await createVacation({
       startDate: e.target.elements[0].value,
-      endDate: e.target.elements[1].value
+      endDate: e.target.elements[1].value,
     });
   };
 
@@ -105,8 +105,10 @@ function App() {
   return (
     <div id="app">
       <Header user={user} handleChangeUser={handleChangeUser} />
-      {params.view === undefined && <Home />}
-      {params.view === "vacations" && (
+      {params.view === undefined && (
+        <Home vacations={vacations} notes={notes} />
+      )}
+      {params.view === 'vacations' && (
         <Vacations
           user={user}
           vacations={vacations}
@@ -114,7 +116,7 @@ function App() {
           handleSubmitVacation={handleSubmitVacation}
         />
       )}
-      {params.view === "notes" && <Notes user={user} notes={notes} />}
+      {params.view === 'notes' && <Notes user={user} notes={notes} />}
     </div>
   );
 }
