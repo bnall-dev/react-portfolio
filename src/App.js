@@ -129,6 +129,16 @@ function App() {
     );
   };
 
+  //ADD NOTES TO LIST
+  const addNotes = async note => {
+    const response = await axios.post(`${API}/users/${user.id}/notes`, note);
+    setNotes([...notes, response.data]);
+  };
+
+  //REMOVE NOTES FROM LIST
+  const removeNote = async note => {
+    await axios.delete(`${API}/users/${user.id}/notes/${note.id}`);
+    setNotes(notes.filter(notes => notes.id !== note.id));
   //FOLLOWS COMPANY USING FORM SELECTION
   const createCompany = async company => {
     const response = await axios.post(
@@ -178,6 +188,14 @@ function App() {
           vacations={vacations}
           handleRemoveVacation={handleRemoveVacation}
           handleSubmitVacation={handleSubmitVacation}
+        />
+      )}
+      {params.view === "notes" && (
+        <Notes
+          user={user}
+          notes={notes}
+          remNote={removeNote}
+          addNote={addNotes}
         />
       )}
       {params.view === 'followingCompanies' && (
